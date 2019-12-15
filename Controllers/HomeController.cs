@@ -5,22 +5,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SacramentPlanner.Models;
+using Microsoft.EntityFrameworkCore;
+using SacramentPlanner.Data;
+using SacramentPlanner.Models.MeetingViewModels;
 
 namespace SacramentPlanner.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MeetingContext _context;
+
+        public HomeController(MeetingContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult About()
+        //About page. Do we need this?
+       /* public async Task<ActionResult> About()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
+            IQueryable<SpeechDateGroup> data =
+                from speaker in _context.Speakers
+                group speaker by speaker.SpeechDate into dateGroup
+                select new SpeechDateGroup()
+                {
+                    SpeechDate = dateGroup.Key,
+                    SpeakerCount = dateGroup.Count()
+                };
+            return View(await data.AsNoTracking().ToListAsync());
+        }*/
 
         public IActionResult Contact()
         {

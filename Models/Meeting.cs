@@ -11,6 +11,7 @@ namespace SacramentPlanner.Models
         public int ID { get; set; }
         [Display(Name = "Meeting Date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime MeetingDate { get; set; }
 
         [StringLength(60, MinimumLength = 2)]
@@ -35,8 +36,9 @@ namespace SacramentPlanner.Models
         [Display(Name = "Closing Prayer")]
         [Required]
         public string ClosingPrayer { get; set; }
-
-        public ICollection<Speaker> Speakers { get; set; }
+        [Required]
+       
+        public ICollection<Assignment> Assignments { get; set; }
 
     }
 }

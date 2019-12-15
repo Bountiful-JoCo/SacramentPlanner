@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SacramentPlanner.Models
 {
-    public class Speaker
+    public class Person
     {
-
         public int ID { get; set; }
         [StringLength(60, MinimumLength = 2)]
         [RegularExpression("^[a-zA-Z0-9 '-]*$", ErrorMessage = "Enter Last name using only letters, apostrophe or hyphen")]
@@ -20,20 +19,5 @@ namespace SacramentPlanner.Models
         [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
-
-        [Display(Name = "Full Name")]
-        public string FullName
-        {
-            get
-            {
-                return LastName + ", " + FirstName;
-            }
-        }
-
-
-        public ICollection<Assignment> Assignments { get; set; }
-
-        
-        
     }
 }
