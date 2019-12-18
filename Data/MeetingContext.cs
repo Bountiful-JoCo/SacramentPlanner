@@ -12,15 +12,17 @@ namespace SacramentPlanner.Data
         public MeetingContext(DbContextOptions<MeetingContext> options) : base(options)
         {
         }
-        public DbSet<Assignment> Assignments { get; set; }
+        
         public DbSet<Speaker> Speakers { get; set; }
-        public DbSet<Topic> Topics { get; set; }
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Assignment>().ToTable("Assignment");
+           
             modelBuilder.Entity<Speaker>().ToTable("Speaker");
-            modelBuilder.Entity<Topic>().ToTable("Topic");
+            
         }
+
+        public DbSet<SacramentPlanner.Models.Meeting> Meeting { get; set; }
     }
 }

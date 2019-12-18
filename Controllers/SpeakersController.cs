@@ -73,8 +73,10 @@ namespace SacramentPlanner.Controllers
             }
 
             var speaker = await _context.Speakers
-                 .Include(s => s.Assignments)
-                     .ThenInclude(a => a.Topic)
+                 .Include(s => s.Meeting)
+                    .ThenInclude(s=>s.SpeechDate)
+                 .Include (s=>s.Meeting)
+                    .ThenInclude(a => a.Topic)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 

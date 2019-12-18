@@ -10,11 +10,17 @@ namespace SacramentPlanner.Models
     {
 
         public int ID { get; set; }
+        public int MeetingID { get; set; }
+        public int SpeakingOrder { get; set; }
+
+       
+
         [StringLength(60, MinimumLength = 2)]
         [RegularExpression("^[a-zA-Z0-9 '-]*$", ErrorMessage = "Enter Last name using only letters, apostrophe or hyphen")]
         [Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
+
         [StringLength(60, MinimumLength = 2)]
         [RegularExpression("^[a-zA-Z0-9 '-]*$", ErrorMessage = "Enter First name using only letters, apostrophe or hyphen")]
         [Display(Name = "First Name")]
@@ -30,10 +36,11 @@ namespace SacramentPlanner.Models
             }
         }
 
+        public Meeting Meeting { get; set; }
 
-        public ICollection<Assignment> Assignments { get; set; }
 
-        
-        
+
+
+
     }
 }

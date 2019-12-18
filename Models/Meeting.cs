@@ -9,10 +9,11 @@ namespace SacramentPlanner.Models
     public class Meeting
     {
         public int ID { get; set; }
+
         [Display(Name = "Meeting Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime MeetingDate { get; set; }
+        public DateTime SpeechDate { get; set; }
+        public string Topic { get; set; }
 
         [StringLength(60, MinimumLength = 2)]
         [RegularExpression("^[a-zA-Z0-9 '-]*$", ErrorMessage = "Enter name using only letters, apostrophe or hyphen")]
@@ -38,7 +39,7 @@ namespace SacramentPlanner.Models
         public string ClosingPrayer { get; set; }
         [Required]
        
-        public ICollection<Assignment> Assignments { get; set; }
+        public ICollection<Speaker> Speakers { get; set; }
 
     }
 }
